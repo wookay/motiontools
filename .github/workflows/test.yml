@@ -16,4 +16,5 @@ jobs:
           python-version: 3.8
       - name: Generate coverage report
         run: |
+          cd motiontools
           python3 -m unittest tests/*py
