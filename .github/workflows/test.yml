@@ -19,5 +19,5 @@ jobs:
           pwd
           ls
           pip3 install unittest2
-          python3 setup.py test
+          # python3 setup.py test
           python3 -m unittest tests/*py
