@@ -5,7 +5,7 @@ on:
       - 'master'
 jobs:
   codecov:
-    name: Codecov Workflow
+    name: test
     runs-on: ubuntu-18.04
     
     steps:
@@ -16,4 +16,7 @@ jobs:
           python-version: 3.8
       - name: Generate coverage report
         run: |
-          cd motiontools && python3 -m unittest tests/*py
+          pwd
+          ls
+          python3 setup.py test
+          python3 -m unittest tests/*py
