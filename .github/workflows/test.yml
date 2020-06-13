@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - 'master'
+    paths-ignore:
+      - '**.md'
+  schedule:
+    - cron: 0 0 * * *
 jobs:
   codecov:
     name: test
@@ -10,14 +14,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: Set up Python
+
+      - name: setup python 3.8
         uses: actions/setup-python@master
         with:
           python-version: 3.8
+
       - name: install
         run: |
           pip3 install unittest2
           python3 setup.py test
+
       - name: test
         run: |
           python3 -m unittest tests/*py
