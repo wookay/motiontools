@@ -1,3 +1,5 @@
+# from https://moderngl.readthedocs.io/en/latest/the_guide/context.html#context-sharing
+
 # Object sharing is an experimental feature
 
 """

@@ -1,3 +1,5 @@
+# from https://moderngl.readthedocs.io/en/latest/the_guide/headless_ubunut18_server.html
+
 import moderngl
 import numpy as np
 from PIL import Image
