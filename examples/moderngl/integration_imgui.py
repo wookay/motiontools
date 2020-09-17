@@ -29,7 +29,9 @@ class WindowEvents(mglw.WindowConfig):
         self.slider_value = 88
 
     def render(self, time: float, frametime: float):
-        rotation = Matrix44.from_eulers((time, time, time), dtype='f4')
+        # rotation = Matrix44.from_eulers((time, 0, 0), dtype='f4')
+        # rotation = Matrix44.from_eulers((0, time, 0), dtype='f4')
+        rotation = Matrix44.from_eulers((0, 0, time), dtype='f4')
         translation = Matrix44.from_translation((0.0, 0.0, -3.5), dtype='f4')
         model = translation * rotation
 
@@ -37,9 +39,9 @@ class WindowEvents(mglw.WindowConfig):
         self.prog['m_model'].write(model)
         self.cube.render(self.prog)
 
-        self.render_ui(rotation, translation, model)
+        self.render_ui(time, rotation, translation, model)
 
-    def render_ui(self, rotation, translation, model):
+    def render_ui(self, time, rotation, translation, model):
         imgui.new_frame()
         if imgui.begin_main_menu_bar():
             if imgui.begin_menu("File", True):
@@ -64,6 +66,7 @@ class WindowEvents(mglw.WindowConfig):
         ) 
         if changed:
             self.slider_value = changed_value
+        imgui.text(string("time: \n", time))
         imgui.text(string("rotation: \n", rotation))
         imgui.text(string("translation: \n", translation))
         imgui.text(string("model = translation * rotation: \n", model))
